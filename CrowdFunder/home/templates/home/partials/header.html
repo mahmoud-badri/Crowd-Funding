@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" href="{% url 'index' %}">H<sub>R</sub>O</a>
+    <button class="navbar-toggler btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'project_list' %}">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact us</a>
+        </li>
+      </ul>
+      <form class="d-flex w-50" action="{% url 'search' %}" method="get">
+        <input class="form-control me-2" name="param" type="search" placeholder="Search" aria-label="Search">
+        <button type="submit" class="btn btn-light"><i class="fa fa-search fs-4"></i></button>
+      </form>
+      {% if user.id %}
+      <div class="btn-group ms-2">
+        <a type="button" class="btn btn-info" href="{% url 'profile' pk=user.id %}">
+          <img src="{{ user.get_profile_picture | default:'/media/account/images/annon.png' }}" alt="Avatar" class="img-fluid rounded-circle me-2" style="width: 30px;">
+          {% if user.first_name %}{{ user.first_name }}{% else %}{{ user }}{% endif %}
+        </a>
+        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-gear"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{% url 'profile' pk=user.id %}#projects">Your Projects</a></li>
+          <li><a class="dropdown-item" href="{% url 'profile' pk=user.id %}#donations">Your Donations</a></li>
+          <li><a class="dropdown-item" href="{% url 'editprofile' %}">Edit Profile</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      </div>
+      {% else %}
+      <ul class="navbar-nav ms-2">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</nav>

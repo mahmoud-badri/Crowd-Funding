@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* background-color: antiquewhite; */
+    background-color: #fdfdfdd6;
+    background: url('../images/download.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 55px;
+    background-color: #fdfdfdd6;
+}   
+
+/* Home Page Styling */
+
+
+#home {
+    position: relative;
+    width: 100%;
+    height: 730px;
+    margin-top: -2rem;
+    border-radius: 0.5rem;
+    
+}
+
+a.start {
+    position: absolute;
+    font-WEIGHT: bold;
+    top: 50%;
+    left: 33%;
+    font-size: 2rem;
+    border-radius: 2rem;
+    height: 7rem;
+    line-height: 3;
+    box-shadow: 0 0 11px;
+
+}
+
+
+#home.container.join {
+    padding: 6rem;
+    padding-left: 570px;
+}
+
+#home .btn-secondary {
+    /* color: #07829b; */
+    background-color: #f8eaea00;
+    border-color: #6c757d;
+}
+
+
+/* End of Home Page Styling */
+
+
+
+.nav-link {
+    color: white;
+    
+}
+
+
+/* End Of Header Styling */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+ul.errorlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    }
+
+div.brands i {
+    font-size: 30px;
+}
+
+button.btn.search:hover {
+    background-color: rgb(145, 39, 39);
+    
+}
+
+/* Star ratings */
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 50px;
+    font-weight: 300;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}

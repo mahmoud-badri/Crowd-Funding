@@ -1,0 +1,158 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .float {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    text-align: center;
+    box-shadow: 0 0 10px #999;
+    z-index: 5;
+  }
+
+  .my-float {
+    margin-top: 22px;
+  }
+
+  .carousel-caption {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+  }
+
+  .category-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .top-rated h2 {
+    text-align: center;
+  }
+
+  .latest-projects h1 {
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .category{
+    text-align:center;
+    text-transform: ca
+  }
+
+</style>
+
+<div class="container position-relative" id="Home">
+
+  {% if user %}
+  <a href="{% url 'project_create' %}" class="float p-3 fs-5 rounded-pill bg-info text-decoration-none text-light btn btn-danger">
+    <i class="fa fa-plus"></i> Add a new project
+  </a>
+  {% endif %}
+
+  <!-- Featured Projects -->
+  {% if featured_projects %}
+  <div class="join my-5">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide">
+      <div class="text-center position-absolute text-light m-3 p-3 rounded-pill" style="z-index: 5; background-color: rgba(0, 0, 0, 0.35);">
+        <h2> Our Featured Projects </h2>
+      </div>
+
+      <div class="carousel-indicators">
+        {% for project in featured_projects %}
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" {% endif %}></button>
+        {% endfor %}
+      </div>
+
+      <div class="carousel-inner">
+        {% for project in featured_projects %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="10000">
+          <img src="{{ project.thumbnail }}" style="height:60vh; opacity:90%; object-fit: cover;" class="d-block w-100" alt="...">
+          <div class="carousel-caption rounded">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.details }}</p>
+            <a href="{% url 'project_detail' pk=project.id %}" class="btn btn-outline-light">View Details</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Categories -->
+  <div class="category bg-light p-3 my-3 rounded">
+    <h3>Browse by category</h3>
+
+    <div class="row row-cols-1 row-cols-lg-5">
+      <div class="col">
+        <a class="btn btn-dark category-btn" href="{% url 'category' 'Social' %}">
+          Social <i class="fa fa-people-arrows"></i></a>
+      </div>
+      <div class="col">
+        <a class="btn btn-outline-dark category-btn" href="{% url 'category' 'Human Rights' %}">
+          Human Rights <i class="fa fa-hand-holding-heart"></i></a>
+      </div>
+      <div class="col">
+        <a class="btn btn-dark category-btn" href="{% url 'category' 'Health' %}">
+          Health <i class="fa fa-user-nurse"></i></a>
+      </div>
+      <div class="col">
+        <a class="btn btn-outline-dark category-btn" href="{% url 'category' 'Education' %}">
+          Education <i class="fa fa-school"></i></a>
+      </div>
+      <div class="col">
+        <a class="btn btn-dark category-btn" href="{% url 'category' 'Nonprofit' %}">
+          Nonprofit <i class="fa fa-handshake"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Rated Projects -->
+  {% if top_rated_projects %}
+  <div class="top-rated my-3">
+    <h2> Top Rated Projects </h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+      {% for project in top_rated_projects %}
+      <div class="col">
+        <div class="card position-relative mx-1 rounded" style="height: 550px;">
+          {% include "projects/partials/projectinfo.html" with project=project inlist=1 %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Latest Projects -->
+  <div class="latest-projects">
+    <h1>Our Latest Projects</h1>
+    {% if latest_projects %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 my-2 overflow-hidden">
+      {% for project in latest_projects %}
+      <div class="col">
+        <div class="card position-relative mx-1 rounded" style="height: 550px;">
+          {% include "projects/partials/projectinfo.html" with project=project inlist=1 %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <h3>No projects found.</h3>
+    <div class="d-flex justify-content-center">
+      <a class="btn btn-primary w-50 mx-auto" href="{% url 'project_create' %}" style="margin-bottom: 10px;">Add Project</a>
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+
+{% endblock %}

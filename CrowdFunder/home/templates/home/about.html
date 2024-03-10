@@ -1,0 +1,119 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+<style>
+    .card {
+        border: none;
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card-img-top {
+        height: 450px; 
+        object-fit: cover;
+        border-radius:20px
+    }
+
+    .card-title {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .card-text {
+        color: #6c757d;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <img src="{% static 'home/images/mahmoud.jpeg' %}" class="card-img-top" alt="Team Member 1">
+                <div class="card-body">
+                    <h5 class="card-title">Mahmoud Badry Mahmoud Sayed</h5>
+                    <p class="card-text">Full Stack Developer Using Python</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="https://www.facebook.com/profile.php" class="btn btn-primary me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="btn btn-primary me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/mahmoud-badr-45639324b/" class="btn btn-primary"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Repeat the same structure for other team members -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <img src="{% static 'home/images/ahmedElAdaawy.jpeg' %}" class="card-img-top" alt="Team Member 2">
+                <div class="card-body">
+                    <h5 class="card-title">Ahmed Magdy Eladawy</h5>
+                    <p class="card-text">Full Stack Developer Using Python</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="btn btn-primary me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="btn btn-primary me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="btn btn-primary"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <img src="{% static 'home/images/shehata.jpeg' %}" class="card-img-top" alt="Team Member 3">
+                <div class="card-body">
+                    <h5 class="card-title">Ahmed Shehata Mohamed</h5>
+                    <p class="card-text">Full Stack Developer Using Python</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="btn btn-primary me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="btn btn-primary me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="btn btn-primary"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <img src="{% static 'home/images/mostafa.jpeg' %}" class="card-img-top" alt="Team Member 4">
+                <div class="card-body">
+                    <h5 class="card-title">Mostafa Hefzy Ahmed</h5>
+                    <p class="card-text">Full Stack Developer Using Python</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="btn btn-primary me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="btn btn-primary me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="btn btn-primary"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <img src="{% static 'home/images/salah.jpeg' %}" class="card-img-top" alt="Team Member 5">
+                <div class="card-body">
+                    <h5 class="card-title">Salah Mohamed Salah</h5>
+                    <p class="card-text">Full Stack Developer Using Python</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="btn btn-primary me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="btn btn-primary me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="btn btn-primary"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
